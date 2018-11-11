@@ -28,7 +28,7 @@ class DefinitionUtil {
     private static final String CLASS_EXPLAIN = GenerateTemplateCodeUtil.CLASS_EXPLAIN;
 
     /** 项目根目录 */
-    private static final String PROJECT_DIR = "C:\\Users\\tracyAsher\\Documents\\jz-leasing-base\\";
+    private static final String PROJECT_DIR = "E:\\base-web-api\\";
 
     ////////////////////////// 定参 //////////////////////////////////
     /** 总工程名称 */

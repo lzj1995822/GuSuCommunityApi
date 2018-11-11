@@ -236,4 +236,88 @@
         </createTable>
     </changeSet>
 
+    <changeSet id="20181110-03" author="asher">
+        <comment>实体类表</comment>
+        <createTable tableName="sys_class">
+            <column name="id" type="varchar(36)" remarks="主键">
+                <constraints primaryKey="true" nullable="false" primaryKeyName="pk_sys_class"/>
+            </column>
+            <column name="name" type="varchar(36)" remarks="类名"/>
+            <column name="des" type="varchar(200)" remarks="类描述"/>
+            <column name="createdAt" type="datetime" remarks="创建时间"/>
+            <column name="modifiedAt" type="datetime" remarks="更新时间"/>
+            <column name="createdBy" type="varchar(36)" remarks="创建人"/>
+            <column name="modifiedBy" type="varchar(36)" remarks="更新人"/>
+            <column name="version" type="int" remarks="版本号"/>
+            <column name="isDelete" type="int" remarks="是否删除"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="20181110-04" author="asher">
+        <comment>实体类属性配置表</comment>
+        <createTable tableName="sys_class_property">
+            <column name="id" type="varchar(36)" remarks="主键">
+                <constraints primaryKey="true" nullable="false" primaryKeyName="pk_sys_class_property"/>
+            </column>
+            <column name="classId" type="varchar(36)" remarks="类id">
+                <constraints referencedTableName="sys_class" referencedColumnNames="id" nullable="false" foreignKeyName="fk_sys_class_property"/>
+            </column>
+            <column name="name" type="varchar(36)" remarks="属性名"/>
+            <column name="type" type="varchar(50)" remarks="数据类型"/>
+            <column name="length" type="int" remarks="长度"/>
+            <column name="des" type="varchar(200)" remarks="属性描述"/>
+            <column name="createdAt" type="datetime" remarks="创建时间"/>
+            <column name="modifiedAt" type="datetime" remarks="更新时间"/>
+            <column name="createdBy" type="varchar(36)" remarks="创建人"/>
+            <column name="modifiedBy" type="varchar(36)" remarks="更新人"/>
+            <column name="version" type="int" remarks="版本号"/>
+            <column name="isDelete" type="int" remarks="是否删除"/>
+        </createTable>
+    </changeSet>
+    
+    <changeSet id="20181110-01" author="asher">
+        <comment>系统路由配置表</comment>
+        <createTable tableName="sys_routes">
+            <column name="id" type="varchar(36)" remarks="主键">
+                <constraints primaryKey="true" nullable="false" primaryKeyName="pk_sys_routes"/>
+            </column>
+            <column name="parentId" type="varchar(36)" remarks="父路由id">
+                <constraints referencedTableName="sys_routes" referencedColumnNames="id" nullable="true" foreignKeyName="fk_routes"/>
+            </column>
+            <column name="classId" type="varchar(36)" remarks="类id">
+                <constraints referencedTableName="sys_class" referencedColumnNames="id" nullable="false" foreignKeyName="fk_sys_class_route"/>
+            </column>
+            <column name="name" type="varchar(36)" remarks="路由名称"/>
+            <column name="path" type="varchar(200)" remarks="路由访问url地址"/>
+            <column name="component" type="varchar(50)" remarks="组件名"/>
+            <column name="des" type="varchar(200)" remarks="路由描述"/>
+            <column name="createdAt" type="datetime" remarks="创建时间"/>
+            <column name="modifiedAt" type="datetime" remarks="更新时间"/>
+            <column name="createdBy" type="varchar(36)" remarks="创建人"/>
+            <column name="modifiedBy" type="varchar(36)" remarks="更新人"/>
+            <column name="version" type="int" remarks="版本号"/>
+            <column name="isDelete" type="int" remarks="是否删除"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="20181110-02" author="asher">
+        <comment>路由meta表</comment>
+        <createTable tableName="sys_routes_meta">
+            <column name="id" type="varchar(36)" remarks="主键">
+                <constraints primaryKey="true" nullable="false" primaryKeyName="pk_sys_routes_meta"/>
+            </column>
+            <column name="routeId" type="varchar(36)" remarks="路由id"/>
+            <column name="title" type="varchar(36)" remarks="标题"/>
+            <column name="icon" type="varchar(36)" remarks="图标"/>
+            <column name="createdAt" type="datetime" remarks="创建时间"/>
+            <column name="modifiedAt" type="datetime" remarks="更新时间"/>
+            <column name="createdBy" type="varchar(36)" remarks="创建人"/>
+            <column name="modifiedBy" type="varchar(36)" remarks="更新人"/>
+            <column name="version" type="int" remarks="版本号"/>
+            <column name="isDelete" type="int" remarks="是否删除"/>
+        </createTable>
+    </changeSet>
+    
+
+
 </databaseChangeLog>
