@@ -1,6 +1,7 @@
 package com.cloudkeeper.leasing.identity.vo;
 
 import com.cloudkeeper.leasing.base.vo.BaseVO;
+import com.cloudkeeper.leasing.identity.domain.SysClass;
 import com.cloudkeeper.leasing.identity.domain.SysRoutes;
 import com.cloudkeeper.leasing.identity.domain.SysRoutesMeta;
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -58,7 +59,11 @@ public class SysRoutesVO extends BaseVO {
     private SysRoutesMeta meta;
 
     /** 子路由*/
-    @ApiModelProperty(value = "子路由", position = 13)
+    @ApiModelProperty(value = "子路由", position = 15)
     private List<SysRoutes> children;
+
+    /** 对应类*/
+    @ApiModelProperty(value = "对应类", position = 17)
+    private SysClass sysClass;
 
 }

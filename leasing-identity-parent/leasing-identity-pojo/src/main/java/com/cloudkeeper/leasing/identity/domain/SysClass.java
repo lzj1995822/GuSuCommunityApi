@@ -9,9 +9,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 /**
  * 系统java类
@@ -36,5 +35,9 @@ public class SysClass extends BaseEntity {
     @ApiModelProperty(value = "类描述", position = 10, required = true)
     @Column(length = 200)
     private String des;
+
+    @ApiModelProperty(value = "属性集合")
+    @OneToMany(mappedBy = "sysClass")
+    private List<SysClassProperty> properties;
 
 }

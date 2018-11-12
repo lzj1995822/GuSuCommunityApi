@@ -1,6 +1,7 @@
 package com.cloudkeeper.leasing.identity.domain;
 
 import com.cloudkeeper.leasing.base.domain.BaseEntity;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -30,6 +31,7 @@ public class SysClassProperty extends BaseEntity {
     @Column(length = 36)
     private String classId;
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "classId", insertable = false, updatable = false)
     private SysClass sysClass;
