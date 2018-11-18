@@ -317,6 +317,14 @@
             <column name="isDelete" type="int" remarks="是否删除"/>
         </createTable>
     </changeSet>
+
+    <changeSet id="20181113-01" author="asher">
+        <comment>修改字段名</comment>
+        <dropColumn tableName="sys_routes" columnName="component"/>
+        <addColumn tableName="sys_routes">
+            <column name="componentName" type="varchar(36)" remarks="组件名"/>
+        </addColumn>
+    </changeSet>
     
 
 

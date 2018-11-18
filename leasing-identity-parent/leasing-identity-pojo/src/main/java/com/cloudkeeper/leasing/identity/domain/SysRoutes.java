@@ -59,7 +59,7 @@ public class SysRoutes extends BaseEntity {
     /** 组件名 */
     @ApiModelProperty(value = "组件名", position = 9, required = true)
     @Column(length = 50)
-    private String component;
+    private String componentName;
 
     /** 路由描述 */
     @ApiModelProperty(value = "路由描述", position = 11)
