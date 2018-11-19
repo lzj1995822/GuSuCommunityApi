@@ -45,4 +45,12 @@ public class SysClassPropertySearchable extends BaseSearchable {
     @ApiModelProperty(value = "属性描述", position = 9)
     private String des;
 
+    /** 排序 */
+    @ApiModelProperty(value = "排序", position = 11)
+    private Integer sort;
+
+    /** 父id */
+    @ApiModelProperty(value = "父id", position = 13)
+    private String parentId;
+
 }

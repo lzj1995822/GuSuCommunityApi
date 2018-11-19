@@ -9,10 +9,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-
 /**
  * 类属性配置 DTO
  * @author asher
@@ -44,5 +40,13 @@ public class SysClassPropertyDTO extends BaseEditDTO {
     /** 属性描述 */
     @ApiModelProperty(value = "属性描述", position = 9)
     private String des;
+
+    /** 排序 */
+    @ApiModelProperty(value = "排序", position = 11)
+    private Integer sort;
+
+    /** 父id */
+    @ApiModelProperty(value = "父id", position = 13)
+    private String parentId;
 
 }

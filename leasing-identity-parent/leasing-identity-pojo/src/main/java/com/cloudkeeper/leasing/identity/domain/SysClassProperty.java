@@ -55,6 +55,18 @@ public class SysClassProperty extends BaseEntity {
     @Column(length = 200)
     private String des;
 
+    /** 排序 */
+    @ApiModelProperty(value = "排序", position = 11)
+    private Integer sort;
 
+    /** 父id */
+    @ApiModelProperty(value = "父id", position = 13)
+    @Column(length = 36)
+    private String parentId;
+
+    @JsonBackReference
+    @ManyToOne
+    @JoinColumn(name = "parentId", insertable = false, updatable = false)
+    private SysClassProperty sysClassProperty;
 
 }
