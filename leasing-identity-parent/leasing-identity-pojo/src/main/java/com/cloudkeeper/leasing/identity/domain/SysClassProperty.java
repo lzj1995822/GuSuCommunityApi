@@ -71,7 +71,6 @@ public class SysClassProperty extends BaseEntity {
 
     /** 该属性是对象，所关联的对象 */
     @ApiModelProperty(value = "该属性是对象，所关联的对象", position = 17)
-    @JsonBackReference
     @OneToOne
     @JoinColumn(name = "objectId", insertable = false, updatable = false)
     private SysClass obj;

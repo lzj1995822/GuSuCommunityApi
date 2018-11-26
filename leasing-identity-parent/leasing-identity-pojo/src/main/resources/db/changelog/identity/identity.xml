@@ -333,6 +333,13 @@
             <column name="objectId" type="varchar(36)"/>
         </addColumn>
     </changeSet>
+
+    <changeSet id="20181126-02" author="asher">
+        <comment>属性排序</comment>
+        <addColumn tableName="sys_class_property">
+            <column name="sort" type="int"/>
+        </addColumn>
+    </changeSet>
     
 
 

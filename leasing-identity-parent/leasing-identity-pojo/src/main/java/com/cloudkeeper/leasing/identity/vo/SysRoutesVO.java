@@ -48,7 +48,7 @@ public class SysRoutesVO extends BaseVO {
 
     /** 组件名 */
     @ApiModelProperty(value = "组件名", position = 9, required = true)
-    private String component;
+    private String componentName;
 
     /** 路由描述 */
     @ApiModelProperty(value = "路由描述", position = 11)

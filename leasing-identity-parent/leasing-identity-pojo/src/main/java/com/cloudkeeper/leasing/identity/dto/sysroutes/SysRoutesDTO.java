@@ -1,6 +1,7 @@
 package com.cloudkeeper.leasing.identity.dto.sysroutes;
 
 import com.cloudkeeper.leasing.base.dto.BaseEditDTO;
+import com.cloudkeeper.leasing.identity.dto.sysroutesmeta.SysRoutesMetaDTO;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -48,5 +49,9 @@ public class SysRoutesDTO extends BaseEditDTO {
     /** 路由描述 */
     @ApiModelProperty(value = "路由描述", position = 11)
     private String des;
+
+    /** 路由元对象 */
+    @ApiModelProperty(value = "路由元对象", position = 11)
+    private SysRoutesMetaDTO meta;
 
 }

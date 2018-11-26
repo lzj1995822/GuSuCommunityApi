@@ -9,4 +9,5 @@ import com.cloudkeeper.leasing.base.service.BaseService;
  */
 public interface SysClassPropertyService extends BaseService<SysClassProperty> {
 
+//    SysClassProperty findByObjectId(String id);
 }

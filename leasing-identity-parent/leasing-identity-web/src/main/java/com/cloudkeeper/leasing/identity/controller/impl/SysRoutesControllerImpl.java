@@ -10,6 +10,7 @@ import com.cloudkeeper.leasing.identity.vo.SysRoutesVO;
 import io.swagger.annotations.ApiParam;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,7 +44,7 @@ public class SysRoutesControllerImpl implements SysRoutesController {
 
     @Override
     public Result<SysRoutesVO> add(@ApiParam(value = "系统路由 DTO", required = true) @RequestBody @Validated SysRoutesDTO sysRoutesDTO) {
-        SysRoutes sysRoutes = sysRoutesService.save(sysRoutesDTO.convert(SysRoutes.class));
+        SysRoutes sysRoutes = sysRoutesService.save(sysRoutesDTO);
         return Result.ofAddSuccess(sysRoutes.convert(SysRoutesVO.class));
     }
 

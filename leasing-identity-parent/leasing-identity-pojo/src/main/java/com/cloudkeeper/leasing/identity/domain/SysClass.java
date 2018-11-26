@@ -38,6 +38,7 @@ public class SysClass extends BaseEntity {
 
     @ApiModelProperty(value = "属性集合")
     @OneToMany(mappedBy = "sysClass")
+    @OrderBy("sort asc")
     private List<SysClassProperty> properties;
 
 }
