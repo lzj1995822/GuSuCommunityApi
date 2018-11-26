@@ -326,13 +326,11 @@
         </addColumn>
     </changeSet>
     
-    <changeSet id="20181119-01" author="asher">
-        <comment>类属性配置表增加排序字段,外键字段指向父表</comment>
+    <changeSet id="20181126-01" author="asher">
+        <comment>属性可能为对象，统一遍历渲染</comment>
         <addColumn tableName="sys_class_property">
-            <column name="sort" type="int" remarks="排序"/>
-            <column name="parentId" type="varchar(36)" remarks="父id">
-                <constraints referencedTableName="sys_class_property" referencedColumnNames="id" nullable="true" foreignKeyName="fk_sys_class"/>
-            </column>
+            <column name="isObject" type="int"/>
+            <column name="objectId" type="varchar(36)"/>
         </addColumn>
     </changeSet>
     
