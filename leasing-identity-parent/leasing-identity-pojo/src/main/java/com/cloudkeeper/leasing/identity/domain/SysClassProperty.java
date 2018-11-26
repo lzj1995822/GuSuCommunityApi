@@ -27,7 +27,7 @@ import javax.persistence.*;
 public class SysClassProperty extends BaseEntity {
 
     /** 类id */
-    @ApiModelProperty(value = "类id", position = 1, required = true)
+    @ApiModelProperty(value = "所属类id", position = 1, required = true)
     @Column(length = 36)
     private String classId;
 
@@ -59,14 +59,21 @@ public class SysClassProperty extends BaseEntity {
     @ApiModelProperty(value = "排序", position = 11)
     private Integer sort;
 
-    /** 父id */
-    @ApiModelProperty(value = "父id", position = 13)
+    /** 该属性是否是对象 */
+    @ApiModelProperty(value = "该属性是否是对象", position = 13)
     @Column(length = 36)
-    private String parentId;
+    private String isObject;
 
+    /** 该属性是对象，所关联的类id */
+    @ApiModelProperty(value = "该属性是对象，所关联的类id", position = 15)
+    @Column(length = 36)
+    private String objectId;
+
+    /** 该属性是对象，所关联的对象 */
+    @ApiModelProperty(value = "该属性是对象，所关联的对象", position = 17)
     @JsonBackReference
-    @ManyToOne
-    @JoinColumn(name = "parentId", insertable = false, updatable = false)
-    private SysClassProperty sysClassProperty;
+    @OneToOne
+    @JoinColumn(name = "objectId", insertable = false, updatable = false)
+    private SysClass obj;
 
 }
