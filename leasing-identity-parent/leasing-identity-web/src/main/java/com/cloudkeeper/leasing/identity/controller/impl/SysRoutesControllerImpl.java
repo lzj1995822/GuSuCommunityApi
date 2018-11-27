@@ -55,9 +55,7 @@ public class SysRoutesControllerImpl implements SysRoutesController {
         if (!sysRoutesOptional.isPresent()) {
             return Result.ofLost();
         }
-        SysRoutes sysRoutes = sysRoutesOptional.get();
-        BeanUtils.copyProperties(sysRoutesDTO, sysRoutes);
-        sysRoutes = sysRoutesService.save(sysRoutes);
+        SysRoutes sysRoutes = sysRoutesService.save(sysRoutesDTO);
         return Result.ofUpdateSuccess(sysRoutes.convert(SysRoutesVO.class));
     }
 

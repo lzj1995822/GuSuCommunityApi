@@ -15,4 +15,8 @@ public abstract class BaseEditDTO extends BaseDTO {
     /** 版本（乐观锁）*/
     @ApiModelProperty(value = "版本（乐观锁）", position = 6)
     private Integer version = 0;
+
+    /** id*/
+    @ApiModelProperty(value = "id", position = 7)
+    private String id;
 }
