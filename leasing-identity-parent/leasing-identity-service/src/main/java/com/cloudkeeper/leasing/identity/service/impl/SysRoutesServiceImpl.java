@@ -75,4 +75,15 @@ public class SysRoutesServiceImpl extends BaseServiceImpl<SysRoutes> implements 
         sysRoutesMetaService.save(meta.convert(SysRoutesMeta.class));
         return sysRoutes;
     }
+
+    @Override
+    public void deleteById(String id) {
+        SysRoutes sysRoutes = getOne(id);
+        if (sysRoutes == null) {
+            return;
+        }
+        sysRoutesMetaService.deleteById(sysRoutes.getMeta().getId());
+        super.deleteById(id);
+    }
+
 }
