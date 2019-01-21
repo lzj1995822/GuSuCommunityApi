@@ -12,6 +12,7 @@ import lombok.experimental.Accessors;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * 工程信息类 VO
@@ -60,5 +61,9 @@ public class ProjectInfoVO extends BaseVO {
     private Integer isDeepExcavation;
 
     private Integer enable;
+
+    private Date startTime;
+
+    private Date endTime;
 
 }
