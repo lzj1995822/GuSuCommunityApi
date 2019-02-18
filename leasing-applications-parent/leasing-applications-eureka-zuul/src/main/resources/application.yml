@@ -26,3 +26,15 @@ zuul:
       sensitive-headers:
       custom-sensitive-headers: true
 #  sensitive-headers:
+
+ribbon:
+  ReadTimeout: 100000  # 单位毫秒数
+  SocketTimeout: 100000
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 250000

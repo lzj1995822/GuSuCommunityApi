@@ -27,9 +27,6 @@ import javax.persistence.Table;
 @Table(name = "CM_Camera")
 public class Camera extends BaseEntity {
 
-    /** 名称 */
-    @ApiModelProperty(value = "名称", position = 10, required = true)
-    @Column(length = 60)
     private String pid;
     private String cameraUuid;
     private String regionUuid;

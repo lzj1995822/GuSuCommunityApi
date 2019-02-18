@@ -15,6 +15,10 @@
 *.iws
 *.iml
 *.ipr
+*.js
+*.js.map
+*.css
+*.css.map
 
 ### NetBeans ###
 /nbproject/private/
