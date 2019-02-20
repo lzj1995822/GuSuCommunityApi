@@ -9,9 +9,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * 用户
@@ -56,5 +54,27 @@ public class Principal extends BaseEntity {
     @ApiModelProperty(value = "描述", position = 20)
     @Column(length = 1000)
     private String note;
+
+    /** 组织id */
+    @ApiModelProperty(value = "组织id", position = 22, required = true)
+    @Column(length = 36)
+    private String organizationId;
+
+    /** 组织 */
+    @ApiModelProperty(value = "组织", position = 24)
+    @ManyToOne
+    @JoinColumn(name = "organizationId", insertable = false, updatable = false)
+    private Organization organization;
+
+    /** 角色id */
+    @ApiModelProperty(value = "角色id", position = 26, required = true)
+    @Column(length = 36)
+    private String roleId;
+
+    /** 角色 */
+    @ApiModelProperty(value = "角色", position = 28)
+    @OneToOne
+    @JoinColumn(name = "roleId", insertable = false, updatable = false)
+    private Role role;
 
 }
