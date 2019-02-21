@@ -43,4 +43,14 @@ public class PrincipalEditDTO extends BaseEditDTO {
     @Length(max = 1000)
     private String note;
 
+    /** 组织id */
+    @ApiModelProperty(value = "组织id", position = 22, required = true)
+    @Length(max = 36)
+    private String organizationId;
+
+    /** 角色id */
+    @ApiModelProperty(value = "角色id", position = 24, required = true)
+    @Length(max = 36)
+    private String roleId;
+
 }

@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
 
+import javax.persistence.Column;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
@@ -55,5 +56,15 @@ public class PrincipalAddDTO extends BaseEditDTO {
     @ApiModelProperty(value = "描述", position = 20)
     @Length(max = 1000)
     private String note;
+
+    /** 组织id */
+    @ApiModelProperty(value = "组织id", position = 22, required = true)
+    @Length(max = 36)
+    private String organizationId;
+
+    /** 角色id */
+    @ApiModelProperty(value = "角色id", position = 24, required = true)
+    @Length(max = 36)
+    private String roleId;
 
 }
