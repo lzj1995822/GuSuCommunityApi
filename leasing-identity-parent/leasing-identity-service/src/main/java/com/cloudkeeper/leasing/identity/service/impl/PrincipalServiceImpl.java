@@ -57,10 +57,10 @@ public class PrincipalServiceImpl extends BaseServiceImpl<Principal> implements 
     private final PrincipalOrganizationService principalOrganizationService;
 
     /** 组织 service */
-    private final OrganizationService organizationService;
+//    private final OrganizationService organizationService;
 
     /** 角色组织 service */
-    private final RoleMenuService roleMenuService;
+//    private final RoleMenuService roleMenuService;
 
     /** redis 操作 */
     private final RedisTemplate<String, String> redisTemplate;
@@ -160,7 +160,7 @@ public class PrincipalServiceImpl extends BaseServiceImpl<Principal> implements 
         PrincipalOrganization principalOrganization = principalOrganizationService.findByPrincipalId(principalVO.getId());
         if (principalOrganization != null) {
             OrganizationVO organizationVO = principalOrganization.getOrganization().convert(OrganizationVO.class);
-            organizationService.loadChildrenVO(organizationVO);
+//            organizationService.loadChildrenVO(organizationVO);
             principalVO.setOrganizationVO(organizationVO);
         }
         // 兼职岗
@@ -169,13 +169,13 @@ public class PrincipalServiceImpl extends BaseServiceImpl<Principal> implements 
                 .filter(principalOrganization1 -> principalOrganization1.getIsPart() == BooleanEnum.TRUE.ordinal())
                 .map(principalOrganization1 -> {
                     OrganizationVO organizationVO = principalOrganization1.getOrganization().convert(OrganizationVO.class);
-                    organizationService.loadChildrenVO(organizationVO);
+//                    organizationService.loadChildrenVO(organizationVO);
                     return organizationVO;
                 })
                 .collect(Collectors.toList());
         principalVO.setOrganizationVOList(organizationVOList);
         // 菜单
-        List<String> menuCodeList = roleMenuService.findAllMenuCodeByPrincipalId(principalVO.getId());
-        principalVO.setMenuCodeList(menuCodeList);
+//        List<String> menuCodeList = roleMenuService.findAllMenuCodeByPrincipalId(principalVO.getId());
+//        principalVO.setMenuCodeList(menuCodeList);
     }
 }

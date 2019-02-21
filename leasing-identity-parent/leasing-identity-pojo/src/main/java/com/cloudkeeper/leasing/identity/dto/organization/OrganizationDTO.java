@@ -41,7 +41,6 @@ public class OrganizationDTO extends BaseEditDTO {
 
     /** 组织类型*/
     @ApiModelProperty(value = "组织类型", position = 16, required = true)
-    @NotNull
     @Enumerated(value = EnumType.STRING)
     private OrganizationTypeEnum type;
 

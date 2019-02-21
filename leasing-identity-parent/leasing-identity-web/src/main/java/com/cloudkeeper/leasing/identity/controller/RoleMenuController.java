@@ -1,5 +1,6 @@
 package com.cloudkeeper.leasing.identity.controller;
 
+import com.cloudkeeper.leasing.identity.domain.SysRoutes;
 import com.cloudkeeper.leasing.identity.vo.RoleMenuVO;
 import com.cloudkeeper.leasing.base.model.Result;
 import io.swagger.annotations.Api;
@@ -32,7 +33,7 @@ public interface RoleMenuController {
     Result deleteByRoleId(@ApiParam(value = "角色id", required = true) @PathVariable String roleId);
 
     @ApiOperation(value = "查询用户菜单", notes = "查询用户菜单", position = 5)
-    @GetMapping("/menuCode")
-    Result<List<String>> findMenuCode(HttpServletRequest request);
+    @GetMapping("/menu")
+    Result<List<SysRoutes>> findMenuCode(HttpServletRequest request);
 
 }

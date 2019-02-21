@@ -19,8 +19,8 @@ public class RoleMenuVO extends BaseVO {
     @ApiModelProperty(value = "角色id", position = 10)
     private String roleId;
 
-    /** 菜单编码*/
-    @ApiModelProperty(value = "菜单编码", position = 13)
-    private String menuCode;
+    /** 菜单id */
+    @ApiModelProperty(value = "菜单id", position = 13, required = true)
+    private String sysRouteId;
 
 }

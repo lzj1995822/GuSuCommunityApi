@@ -3,6 +3,7 @@ package com.cloudkeeper.leasing.identity.service;
 
 import com.cloudkeeper.leasing.identity.domain.RoleMenu;
 import com.cloudkeeper.leasing.base.service.BaseService;
+import com.cloudkeeper.leasing.identity.domain.SysRoutes;
 
 import javax.annotation.Nonnull;
 import java.util.List;
@@ -42,6 +43,6 @@ public interface RoleMenuService extends BaseService<RoleMenu> {
      * @return 菜单集合
      */
     @Nonnull
-    List<String> findAllMenuCodeByPrincipalId(@Nonnull String principalId);
+    List<SysRoutes> findAllMenuCodeByPrincipalId(@Nonnull String principalId);
 
 }
