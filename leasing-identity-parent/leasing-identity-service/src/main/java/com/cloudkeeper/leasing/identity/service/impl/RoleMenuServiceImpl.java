@@ -2,7 +2,9 @@ package com.cloudkeeper.leasing.identity.service.impl;
 
 import com.cloudkeeper.leasing.base.repository.BaseRepository;
 import com.cloudkeeper.leasing.base.service.impl.BaseServiceImpl;
+import com.cloudkeeper.leasing.identity.domain.Principal;
 import com.cloudkeeper.leasing.identity.domain.RoleMenu;
+import com.cloudkeeper.leasing.identity.domain.SysRoutes;
 import com.cloudkeeper.leasing.identity.repository.RoleMenuRepository;
 import com.cloudkeeper.leasing.identity.service.RoleMenuService;
 import lombok.RequiredArgsConstructor;
@@ -11,8 +13,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Nonnull;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * 角色菜单 service
@@ -24,6 +30,8 @@ public class RoleMenuServiceImpl extends BaseServiceImpl<RoleMenu> implements Ro
 
     /** 角色菜单 repository */
     private final RoleMenuRepository roleMenuRepository;
+
+    private final PrincipalServiceImpl principalService;
 
     @Override
     protected BaseRepository<RoleMenu> getBaseRepository() {
@@ -49,14 +57,31 @@ public class RoleMenuServiceImpl extends BaseServiceImpl<RoleMenu> implements Ro
         return menuCodeList.stream().map(menuCode -> {
             RoleMenu roleMenu = new RoleMenu();
             roleMenu.setRoleId(roleId);
-            roleMenu.setMenuCode(menuCode);
+            roleMenu.setSysRouteId(menuCode);
             return roleMenuRepository.save(roleMenu);
         }).collect(Collectors.toList());
     }
 
     @Nonnull
     @Override
-    public List<String> findAllMenuCodeByPrincipalId(@Nonnull String principalId) {
-        return roleMenuRepository.findAllMenuCodeByPrincipalId(principalId);
+    public List<SysRoutes> findAllMenuCodeByPrincipalId(@Nonnull String principalId) {
+        Optional<Principal> optionalById = principalService.findOptionalById(principalId);
+        if (!optionalById.isPresent()) {
+            return new ArrayList<>();
+        }
+        List<RoleMenu> roleMenus = roleMenuRepository.findAllByRoleId(optionalById.get().getRoleId());
+        ArrayList<SysRoutes> sysRoutes = roleMenus.stream().map(item -> item.getSysRoutes()).collect(Collectors.toCollection(ArrayList::new));
+        ArrayList<SysRoutes> firstMenus = sysRoutes.stream().filter(item -> item.getParentId() == null).collect(Collectors.toCollection(ArrayList::new));
+        ArrayList<SysRoutes> childMenus = sysRoutes.stream().filter(item -> item.getParentId() != null).collect(Collectors.toCollection(ArrayList::new));
+        firstMenus.stream().forEach(it -> {
+            it.setChildren(new ArrayList<>());
+            for (SysRoutes item : childMenus) {
+                if (item.getParentId().equals(it.getId())) {
+                    it.getChildren().add(item);
+                }
+            }
+        });
+
+        return firstMenus;
     }
 }

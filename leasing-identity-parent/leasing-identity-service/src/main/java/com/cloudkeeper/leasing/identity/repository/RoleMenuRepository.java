@@ -31,11 +31,10 @@ public interface RoleMenuRepository extends BaseRepository<RoleMenu> {
 
     /**
      * 获取用户的所有菜单集合
-     * @param principalId 用户id
      * @return 菜单集合
      */
-    @Nonnull
-    @Query("select distinct cirm.menuCode from RoleMenu cirm where exists (select 'X' from OrganizationRole cior where cirm.roleId = cior.roleId and exists (select 'X' from PrincipalOrganization cipo where cipo.organizationId = cior.organizationId and cipo.principalId = ?1))")
-    List<String> findAllMenuCodeByPrincipalId(@Nonnull String principalId);
+//    @Nonnull
+//    @Query("select distinct cirm.menuCode from RoleMenu cirm where exists (select 'X' from OrganizationRole cior where cirm.roleId = cior.roleId and exists (select 'X' from PrincipalOrganization cipo where cipo.organizationId = cior.organizationId and cipo.principalId = ?1))")
+//    List<String> findAllMenuCodeByPrincipalId(@Nonnull String principalId);
 
 }

@@ -4,6 +4,7 @@ import com.cloudkeeper.leasing.base.constant.AuthorizationConstants;
 import com.cloudkeeper.leasing.base.model.Result;
 import com.cloudkeeper.leasing.identity.controller.RoleMenuController;
 import com.cloudkeeper.leasing.identity.domain.RoleMenu;
+import com.cloudkeeper.leasing.identity.domain.SysRoutes;
 import com.cloudkeeper.leasing.identity.service.RoleMenuService;
 import com.cloudkeeper.leasing.identity.vo.RoleMenuVO;
 import io.swagger.annotations.ApiParam;
@@ -47,10 +48,10 @@ public class RoleMenuControllerImpl implements RoleMenuController {
     }
 
     @Override
-    public Result<List<String>> findMenuCode(HttpServletRequest request) {
+    public Result<List<SysRoutes>> findMenuCode(HttpServletRequest request) {
         String principalId = (String) request.getSession().getAttribute(AuthorizationConstants.CURRENT_USER_ID);
-        List<String> menuCodeList = roleMenuService.findAllMenuCodeByPrincipalId(principalId);
-        return Result.of(menuCodeList);
+        List<SysRoutes> menus = roleMenuService.findAllMenuCodeByPrincipalId(principalId);
+        return Result.of(menus);
     }
 
 }
