@@ -9,15 +9,15 @@ import com.cloudkeeper.leasing.base.service.impl.BaseServiceImpl;
 import com.cloudkeeper.leasing.base.utils.TokenUtil;
 import com.cloudkeeper.leasing.identity.domain.Principal;
 import com.cloudkeeper.leasing.identity.domain.PrincipalOrganization;
+import com.cloudkeeper.leasing.identity.domain.SysLoginLog;
 import com.cloudkeeper.leasing.identity.dto.principal.PrincipalLoginDTO;
 import com.cloudkeeper.leasing.identity.dto.principal.PrincipalSearchable;
+import com.cloudkeeper.leasing.identity.dto.sysloginlog.SysLoginLogDTO;
 import com.cloudkeeper.leasing.identity.repository.PrincipalRepository;
-import com.cloudkeeper.leasing.identity.service.OrganizationService;
-import com.cloudkeeper.leasing.identity.service.PrincipalOrganizationService;
-import com.cloudkeeper.leasing.identity.service.PrincipalService;
-import com.cloudkeeper.leasing.identity.service.RoleMenuService;
+import com.cloudkeeper.leasing.identity.service.*;
 import com.cloudkeeper.leasing.identity.vo.OrganizationVO;
 import com.cloudkeeper.leasing.identity.vo.PrincipalVO;
+import io.swagger.annotations.ApiParam;
 import liquibase.util.MD5Util;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.criterion.DetachedCriteria;
@@ -31,12 +31,16 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
-
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.RequestBody;
+import  java.util.*;
+import java.util.Date;
 import javax.annotation.Nonnull;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
+import java.time.*;
 
 /**
  * 用户 service
@@ -61,6 +65,9 @@ public class PrincipalServiceImpl extends BaseServiceImpl<Principal> implements 
     /** redis 操作 */
     private final RedisTemplate<String, String> redisTemplate;
 
+    /** 登录日志 */
+    private final SysLoginLogService sysLoginLogService;
+
     @Override
     protected BaseRepository<Principal> getBaseRepository() {
         return principalRepository;
@@ -81,14 +88,26 @@ public class PrincipalServiceImpl extends BaseServiceImpl<Principal> implements 
         }
         Principal principal = principalOptional.get();
         if (!principal.getPassword().equals(MD5Util.computeMD5(principalLoginDTO.getPassword()))) {
+            saveLog("用户名或密码错误", principal);
             return Result.of(Result.ResultCode.LOGIN_FAIL.getCode(), "用户名或密码错误！");
         }
         if (BooleanEnum.TRUE.ordinal() == principal.getIsDelete()) {
+            saveLog("用户名已被禁用", principal);
             return Result.of(Result.ResultCode.LOGIN_FAIL.getCode(), "用户名已被禁用！");
         }
         String token = TokenUtil.of(principal.getId());
         redisTemplate.opsForValue().set(AuthorizationConstants.REDIS_TOKEN_KEY + principal.getId(), token, TokenUtil.TTL_MILLIS, TimeUnit.MILLISECONDS);
+        saveLog("成功", principal);
         return Result.of("登录成功！", token);
+    }
+
+    private void saveLog(String msg, Principal principal) {
+        SysLoginLog sysLoginLog = new SysLoginLog();
+        sysLoginLog.setUserId(principal.getId());
+        sysLoginLog.setUserName(principal.getName());
+        sysLoginLog.setLoginTime(LocalDateTime.now());
+        sysLoginLog.setSuccess(msg);
+        sysLoginLogService.save(sysLoginLog);
     }
 
     @Override
