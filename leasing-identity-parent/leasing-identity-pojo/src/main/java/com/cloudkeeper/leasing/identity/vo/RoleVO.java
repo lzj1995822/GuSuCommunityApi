@@ -32,4 +32,8 @@ public class RoleVO extends BaseVO {
     /** 角色菜单*/
     @ApiModelProperty(value = "角色菜单", position = 20)
     private List<RoleMenuVO> roleMenuVOList;
+
+    /** 组织 id*/
+    @ApiModelProperty(value = "组织id", position = 22)
+    private String organizationId;
 }

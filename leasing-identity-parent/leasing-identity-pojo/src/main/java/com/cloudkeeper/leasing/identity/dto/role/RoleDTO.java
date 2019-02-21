@@ -35,4 +35,9 @@ public class RoleDTO extends BaseEditDTO {
     @Length(max = 1000)
     private String note;
 
+    /** 组织 id*/
+    @ApiModelProperty(value = "组织id", position = 16)
+    @Length(max = 36)
+    private String organizationId;
+
 }
