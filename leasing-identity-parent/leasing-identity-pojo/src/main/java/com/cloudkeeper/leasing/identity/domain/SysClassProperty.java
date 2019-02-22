@@ -75,4 +75,29 @@ public class SysClassProperty extends BaseEntity {
     @JoinColumn(name = "objectId", insertable = false, updatable = false)
     private SysClass obj;
 
+    /** 是否必填*/
+    @ApiModelProperty(value = "是否必填", position = 19)
+    @Column(length = 36)
+    private String required;
+
+    /** 离开触发*/
+    @ApiModelProperty(value = "触发类型", position = 21)
+    @Column(length = 36)
+    private String triggerCheck;
+
+    /** 最小长度*/
+    @ApiModelProperty(value = "最小长度", position = 23)
+    @Column(length = 36)
+    private String min;
+
+    /** 最大长度*/
+    @ApiModelProperty(value = "最大长度", position = 25)
+    @Column(length = 36)
+    private String max;
+
+    /** 类型验证*/
+    @ApiModelProperty(value = "类型验证", position = 27)
+    @Column(length = 36)
+    private String typeCheck;
+
 }

@@ -53,4 +53,27 @@ public class SysClassPropertyVO extends BaseVO {
     @ApiModelProperty(value = "父id", position = 13)
     private String parentId;
 
+
+    /** 是否必填*/
+    @ApiModelProperty(value = "是否必填", position = 19)
+    private String required;
+
+    /** 触发类型*/
+    @ApiModelProperty(value = "触发类型", position = 21)
+    private String triggerCheck;
+
+    /** 最小长度*/
+    @ApiModelProperty(value = "最小长度", position = 23)
+    private String min;
+
+    /** 最大长度*/
+    @ApiModelProperty(value = "最大长度", position = 25)
+    private String max;
+
+    /** 类型验证*/
+    @ApiModelProperty(value = "类型验证", position = 27)
+    private String typeCheck;
+
+
+
 }
