@@ -57,7 +57,7 @@ public class FdfsServiceImpl {
 
     // 封装图片完整URL地址
     private String getResAccessUrl(StorePath storePath) {
-        String fileUrl = "Http://172.20.10.12:22122/" + storePath.getFullPath();
+        String fileUrl = "http://172.16.0.199:8888/" + storePath.getFullPath();
         return fileUrl;
     }
 
