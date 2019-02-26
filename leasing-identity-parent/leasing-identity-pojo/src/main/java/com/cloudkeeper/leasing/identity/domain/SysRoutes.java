@@ -11,6 +11,7 @@ import lombok.Setter;
 import lombok.experimental.Accessors;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -25,7 +26,7 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Table(name = "sys_routes")
-public class SysRoutes extends BaseEntity {
+public class SysRoutes extends BaseEntity implements Comparable{
 
     /** 父路由id */
     @ApiModelProperty(value = "父路由id", position = 1, required = true)
@@ -76,4 +77,10 @@ public class SysRoutes extends BaseEntity {
     @OneToMany(mappedBy = "sysRoutes")
     private List<SysRoutes> children;
 
+    @Override
+    public int compareTo(Object roleMenu) {
+        LocalDateTime left=((SysRoutes)roleMenu).getCreatedAt();
+        /* 正序排列 */
+        return this.getCreatedAt().compareTo(left);
+    }
 }
