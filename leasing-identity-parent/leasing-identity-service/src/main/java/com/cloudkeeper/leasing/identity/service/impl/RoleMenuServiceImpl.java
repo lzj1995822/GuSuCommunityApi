@@ -41,7 +41,7 @@ public class RoleMenuServiceImpl extends BaseServiceImpl<RoleMenu> implements Ro
     @Nonnull
     @Override
     public List<RoleMenu> findAllByRoleId(@Nonnull String roleId) {
-        return roleMenuRepository.findAllByRoleId(roleId);
+        return roleMenuRepository.findAllByRoleIdOrderByCreatedAtAsc(roleId);
     }
 
     @Override
@@ -69,7 +69,7 @@ public class RoleMenuServiceImpl extends BaseServiceImpl<RoleMenu> implements Ro
         if (!optionalById.isPresent()) {
             return new ArrayList<>();
         }
-        List<RoleMenu> roleMenus = roleMenuRepository.findAllByRoleId(optionalById.get().getRoleId());
+        List<RoleMenu> roleMenus = roleMenuRepository.findAllByRoleIdOrderByCreatedAtAsc(optionalById.get().getRoleId());
         ArrayList<SysRoutes> sysRoutes = roleMenus.stream().map(item -> item.getSysRoutes()).collect(Collectors.toCollection(ArrayList::new));
         ArrayList<SysRoutes> firstMenus = sysRoutes.stream().filter(item -> item.getParentId() == null).collect(Collectors.toCollection(ArrayList::new));
         ArrayList<SysRoutes> childMenus = sysRoutes.stream().filter(item -> item.getParentId() != null).collect(Collectors.toCollection(ArrayList::new));
