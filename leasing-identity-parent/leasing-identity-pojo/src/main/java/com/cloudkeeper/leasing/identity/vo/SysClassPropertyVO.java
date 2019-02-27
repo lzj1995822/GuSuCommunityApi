@@ -74,6 +74,10 @@ public class SysClassPropertyVO extends BaseVO {
     @ApiModelProperty(value = "类型验证", position = 27)
     private String typeCheck;
 
+    @ApiModelProperty(value = "是否不显示", position = 29)
+    private String notShow;
+
+
 
 
 }

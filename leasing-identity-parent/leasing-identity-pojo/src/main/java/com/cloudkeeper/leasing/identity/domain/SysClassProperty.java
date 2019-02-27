@@ -100,4 +100,8 @@ public class SysClassProperty extends BaseEntity {
     @Column(length = 36)
     private String typeCheck;
 
+    @ApiModelProperty(value = "是否不显示", position = 29)
+    @Column(length = 36)
+    private String notShow;
+
 }
