@@ -1,14 +1,14 @@
 package com.cloudkeeper.leasing.identity.repository;
 
-import com.cloudkeeper.leasing.identity.domain.PopulationRecords;
+import com.cloudkeeper.leasing.identity.domain.PartyMemberExcellent;
 import com.cloudkeeper.leasing.base.repository.BaseRepository;
 import org.springframework.stereotype.Repository;
 
 /**
- * 人员档案 repository
+ * 优秀党员 repository
  * @author lxw
  */
 @Repository
-public interface PopulationRecordsRepository extends BaseRepository<PopulationRecords> {
+public interface PartyMemberExcellentRepository extends BaseRepository<PartyMemberExcellent> {
 
 }

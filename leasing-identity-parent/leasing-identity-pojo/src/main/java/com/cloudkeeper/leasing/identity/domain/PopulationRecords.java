@@ -19,7 +19,7 @@ import javax.persistence.Table;
  * 类属性配置
  * @author lxw
  */
-@ApiModel(value = "类属性配置", description = "类属性配置")
+@ApiModel(value = "人口档案", description = "人口档案")
 @Getter
 @Setter
 @Accessors(chain = true)
