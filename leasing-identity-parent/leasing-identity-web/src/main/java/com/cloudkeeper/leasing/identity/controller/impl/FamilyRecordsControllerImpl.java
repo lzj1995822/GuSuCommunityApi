@@ -34,20 +34,20 @@ public class FamilyRecordsControllerImpl implements FamilyRecordsController {
     private final FamilyRecordsService familyRecordsService;
 
     @Override
-    public Result<FamilyRecordsVO> findOne(@ApiParam(value = "类属性配置id", required = true) @PathVariable String id) {
+    public Result<FamilyRecordsVO> findOne(@ApiParam(value = "家庭档案id", required = true) @PathVariable String id) {
         Optional<FamilyRecords> familyRecordsOptional = familyRecordsService.findOptionalById(id);
         return familyRecordsOptional.map(familyRecords -> Result.of(familyRecords.convert(FamilyRecordsVO.class))).orElseGet(Result::ofNotFound);
     }
 
     @Override
-    public Result<FamilyRecordsVO> add(@ApiParam(value = "类属性配置 DTO", required = true) @RequestBody @Validated FamilyRecordsDTO familyRecordsDTO) {
+    public Result<FamilyRecordsVO> add(@ApiParam(value = "家庭档案 DTO", required = true) @RequestBody @Validated FamilyRecordsDTO familyRecordsDTO) {
         FamilyRecords familyRecords = familyRecordsService.save(familyRecordsDTO.convert(FamilyRecords.class));
         return Result.ofAddSuccess(familyRecords.convert(FamilyRecordsVO.class));
     }
 
     @Override
-    public Result<FamilyRecordsVO> update(@ApiParam(value = "类属性配置id", required = true) @PathVariable String id,
-        @ApiParam(value = "类属性配置 DTO", required = true) @RequestBody @Validated FamilyRecordsDTO familyRecordsDTO) {
+    public Result<FamilyRecordsVO> update(@ApiParam(value = "家庭档案id", required = true) @PathVariable String id,
+        @ApiParam(value = "家庭档案 DTO", required = true) @RequestBody @Validated FamilyRecordsDTO familyRecordsDTO) {
         Optional<FamilyRecords> familyRecordsOptional = familyRecordsService.findOptionalById(id);
         if (!familyRecordsOptional.isPresent()) {
             return Result.ofLost();
@@ -59,13 +59,13 @@ public class FamilyRecordsControllerImpl implements FamilyRecordsController {
     }
 
     @Override
-    public Result delete(@ApiParam(value = "类属性配置id", required = true) @PathVariable String id) {
+    public Result delete(@ApiParam(value = "家庭档案id", required = true) @PathVariable String id) {
         familyRecordsService.deleteById(id);
         return Result.ofDeleteSuccess();
     }
 
     @Override
-    public Result<List<FamilyRecordsVO>> list(@ApiParam(value = "类属性配置查询条件", required = true) @RequestBody FamilyRecordsSearchable familyRecordsSearchable,
+    public Result<List<FamilyRecordsVO>> list(@ApiParam(value = "家庭档案查询条件", required = true) @RequestBody FamilyRecordsSearchable familyRecordsSearchable,
         @ApiParam(value = "排序条件", required = true) Sort sort) {
         List<FamilyRecords> familyRecordsList = familyRecordsService.findAll(familyRecordsSearchable, sort);
         List<FamilyRecordsVO> familyRecordsVOList = FamilyRecords.convert(familyRecordsList, FamilyRecordsVO.class);
@@ -73,7 +73,7 @@ public class FamilyRecordsControllerImpl implements FamilyRecordsController {
     }
 
     @Override
-    public Result<Page<FamilyRecordsVO>> page(@ApiParam(value = "类属性配置查询条件", required = true) @RequestBody FamilyRecordsSearchable familyRecordsSearchable,
+    public Result<Page<FamilyRecordsVO>> page(@ApiParam(value = "家庭档案查询条件", required = true) @RequestBody FamilyRecordsSearchable familyRecordsSearchable,
         @ApiParam(value = "分页参数", required = true) Pageable pageable) {
         Page<FamilyRecords> familyRecordsPage = familyRecordsService.findAll(familyRecordsSearchable, pageable);
         Page<FamilyRecordsVO> familyRecordsVOPage = FamilyRecords.convert(familyRecordsPage, FamilyRecordsVO.class);

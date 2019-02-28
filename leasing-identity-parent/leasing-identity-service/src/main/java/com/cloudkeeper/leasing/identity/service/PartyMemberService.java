@@ -4,7 +4,7 @@ import com.cloudkeeper.leasing.identity.domain.PartyMember;
 import com.cloudkeeper.leasing.base.service.BaseService;
 
 /**
- * 类属性配置 service
+ * 党员 service
  * @author lxw
  */
 public interface PartyMemberService extends BaseService<PartyMember> {

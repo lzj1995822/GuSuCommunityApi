@@ -11,7 +11,7 @@ import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Service;
 
 /**
- * 类属性配置 service
+ * 党员 service
  * @author lxw
  */
 @Service

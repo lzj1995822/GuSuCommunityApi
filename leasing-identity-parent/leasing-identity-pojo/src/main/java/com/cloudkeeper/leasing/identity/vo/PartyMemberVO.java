@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
  * 类属性配置 VO
  * @author lxw
  */
-@ApiModel(value = "类属性配置 VO", description = "类属性配置 VO")
+@ApiModel(value = "党员 VO", description = "党员 VO")
 @Getter
 @Setter
 @Accessors(chain = true)

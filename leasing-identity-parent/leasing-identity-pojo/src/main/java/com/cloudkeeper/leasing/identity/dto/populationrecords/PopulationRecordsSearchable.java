@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
  * 类属性配置 查询DTO
  * @author lxw
  */
-@ApiModel(value = "类属性配置 查询DTO", description = "类属性配置 查询DTO")
+@ApiModel(value = "人口档案 查询DTO", description = "人口档案 查询DTO")
 @Getter
 @Setter
 @Accessors(chain = true)

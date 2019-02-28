@@ -14,10 +14,10 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 /**
- * 类属性配置 VO
+ * 工会会员 VO
  * @author lxw
  */
-@ApiModel(value = "类属性配置 VO", description = "类属性配置 VO")
+@ApiModel(value = "工会会员 VO", description = "工会会员 VO")
 @Getter
 @Setter
 @Accessors(chain = true)

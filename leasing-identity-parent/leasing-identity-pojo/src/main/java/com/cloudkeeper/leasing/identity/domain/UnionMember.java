@@ -18,7 +18,7 @@ import java.time.LocalDate;
  * 类属性配置
  * @author lxw
  */
-@ApiModel(value = "类属性配置", description = "类属性配置")
+@ApiModel(value = "工会会员", description = "工会会员")
 @Getter
 @Setter
 @Accessors(chain = true)

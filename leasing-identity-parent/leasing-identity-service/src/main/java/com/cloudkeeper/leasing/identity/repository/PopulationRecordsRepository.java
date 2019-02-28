@@ -5,7 +5,7 @@ import com.cloudkeeper.leasing.base.repository.BaseRepository;
 import org.springframework.stereotype.Repository;
 
 /**
- * 类属性配置 repository
+ * 人员档案 repository
  * @author lxw
  */
 @Repository

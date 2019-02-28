@@ -23,7 +23,7 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * 类属性配置 controller
+ * 党员 controller
  * @author lxw
  */
 @RestController
@@ -34,20 +34,20 @@ public class PartyMemberControllerImpl implements PartyMemberController {
     private final PartyMemberService partyMemberService;
 
     @Override
-    public Result<PartyMemberVO> findOne(@ApiParam(value = "类属性配置id", required = true) @PathVariable String id) {
+    public Result<PartyMemberVO> findOne(@ApiParam(value = "党员id", required = true) @PathVariable String id) {
         Optional<PartyMember> partyMemberOptional = partyMemberService.findOptionalById(id);
         return partyMemberOptional.map(partyMember -> Result.of(partyMember.convert(PartyMemberVO.class))).orElseGet(Result::ofNotFound);
     }
 
     @Override
-    public Result<PartyMemberVO> add(@ApiParam(value = "类属性配置 DTO", required = true) @RequestBody @Validated PartyMemberDTO partyMemberDTO) {
+    public Result<PartyMemberVO> add(@ApiParam(value = "党员 DTO", required = true) @RequestBody @Validated PartyMemberDTO partyMemberDTO) {
         PartyMember partyMember = partyMemberService.save(partyMemberDTO.convert(PartyMember.class));
         return Result.ofAddSuccess(partyMember.convert(PartyMemberVO.class));
     }
 
     @Override
-    public Result<PartyMemberVO> update(@ApiParam(value = "类属性配置id", required = true) @PathVariable String id,
-        @ApiParam(value = "类属性配置 DTO", required = true) @RequestBody @Validated PartyMemberDTO partyMemberDTO) {
+    public Result<PartyMemberVO> update(@ApiParam(value = "党员id", required = true) @PathVariable String id,
+        @ApiParam(value = "党员 DTO", required = true) @RequestBody @Validated PartyMemberDTO partyMemberDTO) {
         Optional<PartyMember> partyMemberOptional = partyMemberService.findOptionalById(id);
         if (!partyMemberOptional.isPresent()) {
             return Result.ofLost();
@@ -59,13 +59,13 @@ public class PartyMemberControllerImpl implements PartyMemberController {
     }
 
     @Override
-    public Result delete(@ApiParam(value = "类属性配置id", required = true) @PathVariable String id) {
+    public Result delete(@ApiParam(value = "党员id", required = true) @PathVariable String id) {
         partyMemberService.deleteById(id);
         return Result.ofDeleteSuccess();
     }
 
     @Override
-    public Result<List<PartyMemberVO>> list(@ApiParam(value = "类属性配置查询条件", required = true) @RequestBody PartyMemberSearchable partyMemberSearchable,
+    public Result<List<PartyMemberVO>> list(@ApiParam(value = "党员查询条件", required = true) @RequestBody PartyMemberSearchable partyMemberSearchable,
         @ApiParam(value = "排序条件", required = true) Sort sort) {
         List<PartyMember> partyMemberList = partyMemberService.findAll(partyMemberSearchable, sort);
         List<PartyMemberVO> partyMemberVOList = PartyMember.convert(partyMemberList, PartyMemberVO.class);
@@ -73,7 +73,7 @@ public class PartyMemberControllerImpl implements PartyMemberController {
     }
 
     @Override
-    public Result<Page<PartyMemberVO>> page(@ApiParam(value = "类属性配置查询条件", required = true) @RequestBody PartyMemberSearchable partyMemberSearchable,
+    public Result<Page<PartyMemberVO>> page(@ApiParam(value = "党员查询条件", required = true) @RequestBody PartyMemberSearchable partyMemberSearchable,
         @ApiParam(value = "分页参数", required = true) Pageable pageable) {
         Page<PartyMember> partyMemberPage = partyMemberService.findAll(partyMemberSearchable, pageable);
         Page<PartyMemberVO> partyMemberVOPage = PartyMember.convert(partyMemberPage, PartyMemberVO.class);
