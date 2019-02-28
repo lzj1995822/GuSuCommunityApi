@@ -98,7 +98,7 @@ public class PrincipalServiceImpl extends BaseServiceImpl<Principal> implements 
         String token = TokenUtil.of(principal.getId());
         redisTemplate.opsForValue().set(AuthorizationConstants.REDIS_TOKEN_KEY + principal.getId(), token, TokenUtil.TTL_MILLIS, TimeUnit.MILLISECONDS);
         saveLog("成功", principal);
-        return Result.of("登录成功！", token);
+        return Result.of("登录成功！", token + "$" + principal.getId());
     }
 
     private void saveLog(String msg, Principal principal) {
