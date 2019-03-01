@@ -32,7 +32,7 @@ public class OrganizationStructure extends BaseEntity {
     @Column(length = 60)
     private String name;
 
-    @ApiModelProperty(value = "", position = 3, required = true)
+    @ApiModelProperty(value = "性别", position = 3, required = true)
     @Column(length = 60)
     private String sex;
 
