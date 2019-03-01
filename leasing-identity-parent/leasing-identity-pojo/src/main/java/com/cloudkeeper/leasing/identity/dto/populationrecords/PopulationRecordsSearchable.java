@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
+import javax.persistence.Column;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -108,5 +109,6 @@ public class PopulationRecordsSearchable extends BaseSearchable {
     /** 残疾家庭 */
     @ApiModelProperty(value = "残疾家庭", position = 21, required = true)
     private String disabledFamily;
+
 
 }

@@ -77,7 +77,11 @@ public class SysClassPropertyVO extends BaseVO {
     @ApiModelProperty(value = "是否不显示", position = 29)
     private String notShow;
 
+    @ApiModelProperty(value = "转换类型", position = 22, required = true)
+    private String transferType;
 
+    @ApiModelProperty(value = "转换KEY", position = 23, required = true)
+    private String lookupKey;
 
 
 }

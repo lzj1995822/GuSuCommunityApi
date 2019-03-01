@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
+import javax.persistence.Column;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -52,5 +53,11 @@ public class SysClassPropertySearchable extends BaseSearchable {
     /** 父id */
     @ApiModelProperty(value = "父id", position = 13)
     private String parentId;
+
+    @ApiModelProperty(value = "转换类型", position = 22, required = true)
+    private String transferType;
+
+    @ApiModelProperty(value = "转换KEY", position = 23, required = true)
+    private String lookupKey;
 
 }

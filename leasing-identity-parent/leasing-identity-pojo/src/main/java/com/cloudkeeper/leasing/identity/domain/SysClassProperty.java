@@ -104,4 +104,15 @@ public class SysClassProperty extends BaseEntity {
     @Column(length = 36)
     private String notShow;
 
+    @ApiModelProperty(value = "转换类型", position = 22, required = true)
+    @Column(length = 36)
+    private String transferType;
+
+    @ApiModelProperty(value = "转换KEY", position = 23, required = true)
+    @Column(length = 36)
+    private String lookupKey;
+
+
+
+
 }
