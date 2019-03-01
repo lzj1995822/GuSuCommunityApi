@@ -90,25 +90,7 @@ public class PopulationRecordsDTO extends BaseEditDTO {
     @ApiModelProperty(value = "家庭ID", position = 16, required = true)
     private String familyId;
 
-    /** 户主ID */
-    @ApiModelProperty(value = "户主ID", position = 17, required = true)
-    private String masterId;
 
-    /** 党员家庭 */
-    @ApiModelProperty(value = "党员家庭", position = 18, required = true)
-    private String partyFamily;
-
-    /** 退伍军人家庭 */
-    @ApiModelProperty(value = "退伍军人家庭", position = 19, required = true)
-    private String veteranFamily;
-
-    /** 困难家庭 */
-    @ApiModelProperty(value = "困难家庭", position = 20, required = true)
-    private String hardFamily;
-
-    /** 残疾家庭 */
-    @ApiModelProperty(value = "残疾家庭", position = 21, required = true)
-    private String disabledFamily;
 
 
 }

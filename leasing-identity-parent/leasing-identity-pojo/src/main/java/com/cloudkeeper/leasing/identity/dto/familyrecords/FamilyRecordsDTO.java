@@ -55,18 +55,18 @@ public class FamilyRecordsDTO extends BaseEditDTO {
 
     /** 党员家庭 */
     @ApiModelProperty(value = "党员家庭", position = 8, required = true)
-    private String partyFamily= "false";
+    private String partyFamily;
 
     /** 退伍军人家庭 */
     @ApiModelProperty(value = "退伍军人家庭", position = 9, required = true)
-    private String veteranFamily= "false";
+    private String veteranFamily;
 
     /** 困难家庭 */
     @ApiModelProperty(value = "困难家庭", position = 10, required = true)
-    private String hardFamily= "false";
+    private String hardFamily;
 
     /** 残疾家庭 */
     @ApiModelProperty(value = "残疾家庭", position = 11, required = true)
-    private String disabledFamily= "false";
+    private String disabledFamily;
 
 }

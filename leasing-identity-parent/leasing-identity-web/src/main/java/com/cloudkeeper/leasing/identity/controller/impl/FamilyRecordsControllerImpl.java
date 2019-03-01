@@ -30,7 +30,9 @@ import java.util.Optional;
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class FamilyRecordsControllerImpl implements FamilyRecordsController {
 
-    /** 类属性配置 service */
+    /**
+     * 类属性配置 service
+     */
     private final FamilyRecordsService familyRecordsService;
 
     @Override
@@ -47,7 +49,7 @@ public class FamilyRecordsControllerImpl implements FamilyRecordsController {
 
     @Override
     public Result<FamilyRecordsVO> update(@ApiParam(value = "家庭档案id", required = true) @PathVariable String id,
-        @ApiParam(value = "家庭档案 DTO", required = true) @RequestBody @Validated FamilyRecordsDTO familyRecordsDTO) {
+                                          @ApiParam(value = "家庭档案 DTO", required = true) @RequestBody @Validated FamilyRecordsDTO familyRecordsDTO) {
         Optional<FamilyRecords> familyRecordsOptional = familyRecordsService.findOptionalById(id);
         if (!familyRecordsOptional.isPresent()) {
             return Result.ofLost();
@@ -66,7 +68,8 @@ public class FamilyRecordsControllerImpl implements FamilyRecordsController {
 
     @Override
     public Result<List<FamilyRecordsVO>> list(@ApiParam(value = "家庭档案查询条件", required = true) @RequestBody FamilyRecordsSearchable familyRecordsSearchable,
-        @ApiParam(value = "排序条件", required = true) Sort sort) {
+                                              @ApiParam(value = "排序条件", required = true) Sort sort) {
+        toNull(familyRecordsSearchable);
         List<FamilyRecords> familyRecordsList = familyRecordsService.findAll(familyRecordsSearchable, sort);
         List<FamilyRecordsVO> familyRecordsVOList = FamilyRecords.convert(familyRecordsList, FamilyRecordsVO.class);
         return Result.of(familyRecordsVOList);
@@ -74,10 +77,26 @@ public class FamilyRecordsControllerImpl implements FamilyRecordsController {
 
     @Override
     public Result<Page<FamilyRecordsVO>> page(@ApiParam(value = "家庭档案查询条件", required = true) @RequestBody FamilyRecordsSearchable familyRecordsSearchable,
-        @ApiParam(value = "分页参数", required = true) Pageable pageable) {
+                                              @ApiParam(value = "分页参数", required = true) Pageable pageable) {
+        toNull(familyRecordsSearchable);
         Page<FamilyRecords> familyRecordsPage = familyRecordsService.findAll(familyRecordsSearchable, pageable);
         Page<FamilyRecordsVO> familyRecordsVOPage = FamilyRecords.convert(familyRecordsPage, FamilyRecordsVO.class);
         return Result.of(familyRecordsVOPage);
     }
 
+    private void toNull(FamilyRecordsSearchable familyRecordsSearchable) {
+        if(("false").equals(familyRecordsSearchable.getPartyFamily())){
+            familyRecordsSearchable.setPartyFamily(null);
+        }
+        if(("false").equals(familyRecordsSearchable.getVeteranFamily())){
+            familyRecordsSearchable.setVeteranFamily(null);
+        }
+        if(("false").equals(familyRecordsSearchable.getHardFamily())){
+            familyRecordsSearchable.setHardFamily(null);
+        }
+        if(("false").equals(familyRecordsSearchable.getDisabledFamily())){
+            familyRecordsSearchable.setDisabledFamily(null);
+        }
+
+    }
 }
