@@ -32,7 +32,8 @@ public class PolicyPaperServiceImpl extends BaseServiceImpl<PolicyPaper> impleme
                 .withMatcher("title", ExampleMatcher.GenericPropertyMatchers.contains())
                 .withMatcher("author", ExampleMatcher.GenericPropertyMatchers.contains())
                 .withMatcher("content", ExampleMatcher.GenericPropertyMatchers.contains())
-                .withMatcher("enclosure", ExampleMatcher.GenericPropertyMatchers.contains());
+                .withMatcher("enclosure", ExampleMatcher.GenericPropertyMatchers.contains())
+                .withMatcher("organizationId", ExampleMatcher.GenericPropertyMatchers.contains());
     }
 
 }
