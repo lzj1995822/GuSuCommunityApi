@@ -42,7 +42,7 @@ public interface AccessoryController {
      */
     @ApiOperation(value = "新增", notes = "新增", position = 2)
     @PostMapping("/")
-    Result<AccessoryVO> add(@ApiParam(value = "系统附件 DTO", required = true) AccessoryDTO accessoryDTO, MultipartFile file);
+    Result<AccessoryVO> add(@ApiParam(value = "系统附件 DTO", required = true) AccessoryDTO accessoryDTO, MultipartFile file) throws IOException;
 
     /**
      * 更新
@@ -95,4 +95,8 @@ public interface AccessoryController {
      */
     @GetMapping(value = "/download/{id}")
     void download(@PathVariable("id") String id, HttpServletResponse response) throws IOException;
+
+    @PostMapping(value = "/batch")
+    @ApiOperation(value = "批量上传", notes = "批量上传", position = 6)
+    Result<List<AccessoryVO>> addList(@ApiParam(value = "系统附件 DTO", required = true) List<AccessoryDTO> accessoryDTOs, @RequestParam("files") MultipartFile[] files) throws IOException;
 }

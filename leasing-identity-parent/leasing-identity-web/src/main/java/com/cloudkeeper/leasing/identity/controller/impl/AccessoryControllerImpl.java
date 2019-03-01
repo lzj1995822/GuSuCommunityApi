@@ -22,6 +22,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -43,7 +44,7 @@ public class AccessoryControllerImpl implements AccessoryController {
     }
 
     @Override
-    public Result<AccessoryVO> add(@ApiParam(value = "系统附件 DTO", required = true) AccessoryDTO accessoryDTO, @RequestParam("file") MultipartFile file) {
+    public Result<AccessoryVO> add(@ApiParam(value = "系统附件 DTO", required = true) AccessoryDTO accessoryDTO, @RequestParam("file") MultipartFile file) throws IOException {
         Accessory accessory = accessoryService.save(accessoryDTO.convert(Accessory.class), file);
         return Result.ofAddSuccess(accessory.convert(AccessoryVO.class));
     }
@@ -88,6 +89,16 @@ public class AccessoryControllerImpl implements AccessoryController {
     public void download(@PathVariable String id, HttpServletResponse response) throws IOException {
         Accessory accessory = accessoryService.findById(id);
         accessoryService.download(accessory, response);
+    }
+
+    @Override
+    public Result<List<AccessoryVO>> addList(@ApiParam(value = "系统附件 DTO", required = true) List<AccessoryDTO> accessoryDTOs, @RequestParam("files") MultipartFile[] files) throws IOException {
+        List<AccessoryVO> accessoryVOS = new ArrayList<>();
+        for (int i = 0; i < accessoryDTOs.size(); i++){
+            Accessory accessory = accessoryService.save(accessoryDTOs.get(i).convert(Accessory.class), files[i]);
+            accessoryVOS.add(accessory.convert(AccessoryVO.class));
+        }
+        return Result.ofAddSuccess(accessoryVOS);
     }
 
 

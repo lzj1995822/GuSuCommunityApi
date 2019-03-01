@@ -1,5 +1,6 @@
 package com.cloudkeeper.leasing.identity.service.impl;
 
+import com.cloudkeeper.leasing.identity.service.FdfsService;
 import com.github.tobato.fastdfs.domain.StorePath;
 import com.github.tobato.fastdfs.exception.FdfsUnsupportStorePathException;
 import com.github.tobato.fastdfs.service.FastFileStorageClient;
@@ -22,7 +23,7 @@ import java.nio.charset.Charset;
  * @date 2016/9/7
  */
 @Component
-public class FdfsServiceImpl {
+public class FdfsServiceImpl implements FdfsService {
 
     private final Logger logger = LoggerFactory.getLogger(FdfsServiceImpl.class);
 
