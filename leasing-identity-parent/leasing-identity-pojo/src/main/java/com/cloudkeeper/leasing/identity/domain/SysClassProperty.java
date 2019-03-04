@@ -100,7 +100,7 @@ public class SysClassProperty extends BaseEntity {
     @Column(length = 36)
     private String typeCheck;
 
-    @ApiModelProperty(value = "是否不显示", position = 29)
+    @ApiModelProperty(value = "表格是否不显示", position = 29)
     @Column(length = 36)
     private String notShow;
 
@@ -112,7 +112,9 @@ public class SysClassProperty extends BaseEntity {
     @Column(length = 36)
     private String lookupKey;
 
-
+    @ApiModelProperty(value = "表单是否不显示", position = 29)
+    @Column(length = 36)
+    private String formShow;
 
 
 }

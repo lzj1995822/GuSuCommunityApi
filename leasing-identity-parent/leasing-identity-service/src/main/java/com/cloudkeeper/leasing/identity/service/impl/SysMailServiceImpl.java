@@ -30,6 +30,7 @@ public class SysMailServiceImpl extends BaseServiceImpl<SysMail> implements SysM
     public ExampleMatcher defaultExampleMatcher() {
         return super.defaultExampleMatcher()
                 .withMatcher("mailName", ExampleMatcher.GenericPropertyMatchers.contains())
+                .withMatcher("mailId", ExampleMatcher.GenericPropertyMatchers.contains())
                 .withMatcher("mailBirth", ExampleMatcher.GenericPropertyMatchers.contains())
                 .withMatcher("mailPhone", ExampleMatcher.GenericPropertyMatchers.contains())
                 .withMatcher("mailCompany", ExampleMatcher.GenericPropertyMatchers.contains())

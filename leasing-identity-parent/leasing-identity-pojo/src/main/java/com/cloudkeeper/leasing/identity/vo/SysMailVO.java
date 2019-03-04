@@ -33,6 +33,10 @@ public class SysMailVO extends BaseVO {
     @ApiModelProperty(value = "工号", position = 10, required = true)
     private String mailId;
 
+    /** 性别 */
+    @ApiModelProperty(value = "性别", position = 10, required = true)
+    private String mailSex;
+
     /** 出生日期 */
     @ApiModelProperty(value = "出生日期", position = 10, required = true)
     private LocalDate mailBirth;
