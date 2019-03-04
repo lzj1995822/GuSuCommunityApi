@@ -2,7 +2,7 @@ spring:
   # 数据库配置
   datasource:
     # 连接地址
-    url: jdbc:mysql://rm-uf639z9s4zf5n7c9gko.mysql.rds.aliyuncs.com/GuSuCommunity?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    url: jdbc:mysql://rm-uf639z9s4zf5n7c9gko.mysql.rds.aliyuncs.com/gusucommunity?useUnicode=true&characterEncoding=utf-8&useSSL=false
     # 用户名
     username: asher
     # 密码-
