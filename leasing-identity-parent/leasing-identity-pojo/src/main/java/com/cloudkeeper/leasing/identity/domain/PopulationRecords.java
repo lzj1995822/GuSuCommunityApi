@@ -94,25 +94,7 @@ public class PopulationRecords extends BaseEntity {
     @Column(length = 36)
     private String familyId;
 
-    @ApiModelProperty(value = "户主ID", position = 17, required = true)
-    @Column(length = 36)
-    private String masterId;
 
-    @ApiModelProperty(value = "党员家庭", position = 18, required = true)
-    @Column(length = 36)
-    private String  partyFamily;
-
-    @ApiModelProperty(value = "退伍军人家庭", position = 19, required = true)
-    @Column(length = 36)
-    private String veteranFamily;
-
-    @ApiModelProperty(value = "困难家庭", position = 20, required = true)
-    @Column(length = 36)
-    private String hardFamily;
-
-    @ApiModelProperty(value = "残疾家庭", position = 21, required = true)
-    @Column(length = 36)
-    private String disabledFamily;
 
 
 }

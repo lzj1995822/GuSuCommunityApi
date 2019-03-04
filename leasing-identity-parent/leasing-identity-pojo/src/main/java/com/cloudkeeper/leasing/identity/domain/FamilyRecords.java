@@ -59,19 +59,19 @@ public class FamilyRecords extends BaseEntity {
 
     @ApiModelProperty(value = "党员家庭", position = 8, required = true)
     @Column(length = 36)
-    private String partyFamily;
+    private String partyFamily =  new String("false");
 
     @ApiModelProperty(value = "退伍军人家庭", position = 9, required = true)
     @Column(length = 36)
-    private String veteranFamily;
+    private String veteranFamily =  new String("false");
 
     @ApiModelProperty(value = "困难家庭", position = 10, required = true)
     @Column(length = 36)
-    private String hardFamily;
+    private String hardFamily =  new String("false");
 
     @ApiModelProperty(value = "残疾家庭", position = 11, required = true)
     @Column(length = 36)
-    private String disabledFamily;
+    private String disabledFamily = new String("false");
 
 
 }
