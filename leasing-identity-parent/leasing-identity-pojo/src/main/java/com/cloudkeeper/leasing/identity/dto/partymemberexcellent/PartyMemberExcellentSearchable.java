@@ -65,4 +65,8 @@ public class PartyMemberExcellentSearchable extends BaseSearchable {
     @ApiModelProperty(value = "评定时间", position = 10, required = true)
     private LocalDate evaluateTime;
 
+    @ApiModelProperty(value = "照片", position = 14, required = true)
+    private String picture;
+
+
 }

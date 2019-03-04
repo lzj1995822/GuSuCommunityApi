@@ -68,4 +68,9 @@ public class PartyMemberExcellent extends BaseEntity {
     @Column(length = 36)
     private LocalDate evaluateTime;
 
+    @ApiModelProperty(value = "照片", position = 14, required = true)
+    @Column(length = 600)
+    private String picture;
+
+
 }

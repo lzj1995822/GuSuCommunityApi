@@ -77,4 +77,6 @@ public class PartyMemberVO extends BaseVO {
     @ApiModelProperty(value = "固定电话", position = 13, required = true)
     private String fixedTelephone;
 
+    @ApiModelProperty(value = "照片", position = 14, required = true)
+    private String picture;
 }

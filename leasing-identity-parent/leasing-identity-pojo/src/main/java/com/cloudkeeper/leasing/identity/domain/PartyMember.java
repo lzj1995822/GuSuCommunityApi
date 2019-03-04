@@ -80,6 +80,11 @@ public class PartyMember extends BaseEntity {
     @Column(length = 36)
     private String fixedTelephone;
 
+    @ApiModelProperty(value = "照片", position = 14, required = true)
+    @Column(length = 600)
+    private String picture;
+
+
 
 
 }
