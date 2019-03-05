@@ -42,7 +42,7 @@ public class OrganizationStructure extends BaseEntity {
 
     @ApiModelProperty(value = "部门", position = 7, required = true)
     @Column(length = 60)
-    private String aliasName;
+    private String departmentName;
 
     @ApiModelProperty(value = "部门ID", position = 7, required = true)
     @Column(length = 60)

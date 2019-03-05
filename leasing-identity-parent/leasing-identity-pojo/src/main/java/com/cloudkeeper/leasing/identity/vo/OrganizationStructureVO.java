@@ -39,7 +39,7 @@ public class OrganizationStructureVO extends BaseVO {
 
     /** 部门 */
     @ApiModelProperty(value = "部门", position = 7, required = true)
-    private String aliasName;
+    private String departmentName;
 
     @ApiModelProperty(value = "部门ID", position = 7, required = true)
     private String departmentId;

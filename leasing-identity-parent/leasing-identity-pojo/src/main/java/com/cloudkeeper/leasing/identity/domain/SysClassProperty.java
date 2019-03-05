@@ -116,5 +116,9 @@ public class SysClassProperty extends BaseEntity {
     @Column(length = 36)
     private String formShow;
 
+    @ApiModelProperty(value = "别名", position = 30)
+    @Column(length = 36)
+    private String aliasName;
+
 
 }
