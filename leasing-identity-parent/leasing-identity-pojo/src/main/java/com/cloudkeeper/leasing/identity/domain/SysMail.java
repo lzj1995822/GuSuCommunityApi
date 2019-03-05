@@ -38,6 +38,12 @@ public class SysMail extends BaseEntity {
     @Column(length = 60)
     private String mailId;
 
+    /** 性别 */
+    @ApiModelProperty(value = "性别", position = 10, required = true)
+    @Column(length = 60)
+    private String mailSex;
+
+
     /** 出生日期 */
     @ApiModelProperty(value = "出生日期", position = 10, required = true)
     @Column(length = 60)
