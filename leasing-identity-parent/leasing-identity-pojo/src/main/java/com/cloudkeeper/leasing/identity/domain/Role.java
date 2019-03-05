@@ -1,13 +1,17 @@
 package com.cloudkeeper.leasing.identity.domain;
 
 import com.cloudkeeper.leasing.base.domain.BaseEntity;
+import com.cloudkeeper.leasing.identity.vo.OrganizationStructureVO;
+import com.cloudkeeper.leasing.identity.vo.RoleVO;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import org.springframework.util.StringUtils;
 
+import javax.annotation.Nonnull;
 import javax.persistence.*;
 
 /**
@@ -48,5 +52,16 @@ public class Role extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "organizationId", insertable = false, updatable = false)
     private Organization organization;
+
+    @Nonnull
+    @Override
+    public <T> T convert(@Nonnull Class<T> clazz) {
+        T convert = super.convert(clazz);
+        RoleVO roleVO = (RoleVO) convert;
+        if(!StringUtils.isEmpty(this.organization)){
+            roleVO.setOrganizationName(this.organization.getName());
+        }
+        return (T) roleVO;
+    }
 
 }
