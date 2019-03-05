@@ -1,9 +1,11 @@
 package com.cloudkeeper.leasing.identity.domain;
 
+
 import com.cloudkeeper.leasing.base.domain.BaseEntity;
 import com.cloudkeeper.leasing.identity.vo.PolicyPaperVO;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import liquibase.util.StringUtils;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -58,7 +60,9 @@ public class PolicyPaper extends BaseEntity {
     public <T> T convert(@Nonnull Class<T> clazz) {
         T convert = super.convert(clazz);
         PolicyPaperVO policyPaperVO = (PolicyPaperVO) convert;
-        policyPaperVO.setOrganizationName(this.organization.getName());
+        if(!StringUtils.isEmpty( policyPaperVO.getOrganizationId())) {
+            policyPaperVO.setOrganizationName(this.organization.getName());
+        }
         return (T) policyPaperVO;
     }
 }
