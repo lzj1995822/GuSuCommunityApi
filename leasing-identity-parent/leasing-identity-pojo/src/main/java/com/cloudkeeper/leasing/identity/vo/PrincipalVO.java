@@ -61,4 +61,13 @@ public class PrincipalVO extends BaseVO {
     /** 角色id */
     @ApiModelProperty(value = "角色id", position = 24, required = true)
     private String roleId;
+
+    @ApiModelProperty(value = "组织", position = 26, required = true)
+    private String organizationName;
+
+    @ApiModelProperty(value = "角色", position = 28, required = true)
+    private String roleName;
+
+
+
 }

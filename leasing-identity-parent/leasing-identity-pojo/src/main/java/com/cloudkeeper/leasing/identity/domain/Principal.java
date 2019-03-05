@@ -1,6 +1,8 @@
 package com.cloudkeeper.leasing.identity.domain;
 
 import com.cloudkeeper.leasing.base.domain.BaseEntity;
+import com.cloudkeeper.leasing.identity.vo.OrganizationStructureVO;
+import com.cloudkeeper.leasing.identity.vo.PrincipalVO;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -8,7 +10,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import org.springframework.util.StringUtils;
 
+import javax.annotation.Nonnull;
 import javax.persistence.*;
 
 /**
@@ -73,8 +77,23 @@ public class Principal extends BaseEntity {
 
     /** 角色 */
     @ApiModelProperty(value = "角色", position = 28)
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "roleId", insertable = false, updatable = false)
     private Role role;
+
+    @Nonnull
+    @Override
+    public <T> T convert(@Nonnull Class<T> clazz) {
+        T convert = super.convert(clazz);
+        PrincipalVO principalVO = (PrincipalVO) convert;
+        if(!StringUtils.isEmpty(this.organization)){
+            principalVO.setOrganizationName(this.organization.getName());
+        }
+        if(!StringUtils.isEmpty(this.role)){
+            principalVO.setRoleName(this.role.getName());
+        }
+
+        return (T) principalVO;
+    }
 
 }
