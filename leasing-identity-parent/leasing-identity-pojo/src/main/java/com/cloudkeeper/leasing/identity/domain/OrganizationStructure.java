@@ -1,6 +1,8 @@
 package com.cloudkeeper.leasing.identity.domain;
 
 import com.cloudkeeper.leasing.base.domain.BaseEntity;
+import com.cloudkeeper.leasing.identity.vo.OrganizationStructureVO;
+import com.cloudkeeper.leasing.identity.vo.PolicyPaperVO;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -8,10 +10,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import org.springframework.util.StringUtils;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.annotation.Nonnull;
+import javax.persistence.*;
 
 /**
  * 类属性配置
@@ -42,7 +44,11 @@ public class OrganizationStructure extends BaseEntity {
 
     @ApiModelProperty(value = "部门", position = 7, required = true)
     @Column(length = 60)
-    private String department;
+    private String departmentName;
+
+    @ApiModelProperty(value = "部门ID", position = 7, required = true)
+    @Column(length = 60)
+    private String departmentId;
 
     @ApiModelProperty(value = "职位", position = 9, required = true)
     @Column(length = 60)
@@ -59,5 +65,22 @@ public class OrganizationStructure extends BaseEntity {
     @ApiModelProperty(value = "照片", position = 15, required = true)
     @Column(length = 60)
     private String picture;
+
+    @ApiModelProperty(value = "所属部门", position = 17, required = true)
+    @ManyToOne
+    @JoinColumn(name = "departmentId",insertable = false, updatable = false)
+    private Organization organization;
+
+    @Nonnull
+    @Override
+    public <T> T convert(@Nonnull Class<T> clazz) {
+        T convert = super.convert(clazz);
+        OrganizationStructureVO organizationStructureVO = (OrganizationStructureVO) convert;
+
+        if(!StringUtils.isEmpty(this.organization)) {
+            organizationStructureVO.setDepartmentName(this.organization.getName());
+        }
+        return (T) organizationStructureVO;
+    }
 
 }

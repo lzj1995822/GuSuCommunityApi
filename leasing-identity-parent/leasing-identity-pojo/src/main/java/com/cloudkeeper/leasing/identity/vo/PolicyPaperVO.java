@@ -45,5 +45,7 @@ public class PolicyPaperVO extends BaseVO {
     @ApiModelProperty(value = "所属部门", position = 10, required = true)
     private String organizationId;
 
+    @ApiModelProperty(value = "所属部门", position = 10, required = true)
+    private String organizationName;
 
 }

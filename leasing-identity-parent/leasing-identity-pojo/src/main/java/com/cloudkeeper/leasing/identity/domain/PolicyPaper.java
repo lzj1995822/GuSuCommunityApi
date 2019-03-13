@@ -1,17 +1,19 @@
 package com.cloudkeeper.leasing.identity.domain;
 
+
 import com.cloudkeeper.leasing.base.domain.BaseEntity;
+import com.cloudkeeper.leasing.identity.vo.PolicyPaperVO;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import liquibase.util.StringUtils;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.annotation.Nonnull;
+import javax.persistence.*;
 
 /**
  * 类属性配置
@@ -44,7 +46,23 @@ public class PolicyPaper extends BaseEntity {
     @Column(length = 60)
     private String enclosure;
 
-    @ApiModelProperty(value = "所属部门", position = 10, required = true)
+    @ApiModelProperty(value = "所属部门id", position = 10, required = true)
     @Column(length = 60)
     private String organizationId;
+
+    @ApiModelProperty(value = "所属部门", position = 10, required = true)
+    @ManyToOne
+    @JoinColumn(name = "organizationId",insertable = false, updatable = false)
+    private Organization organization;
+
+    @Nonnull
+    @Override
+    public <T> T convert(@Nonnull Class<T> clazz) {
+        T convert = super.convert(clazz);
+        PolicyPaperVO policyPaperVO = (PolicyPaperVO) convert;
+        if(!StringUtils.isEmpty( policyPaperVO.getOrganizationId())) {
+            policyPaperVO.setOrganizationName(this.organization.getName());
+        }
+        return (T) policyPaperVO;
+    }
 }

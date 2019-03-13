@@ -60,4 +60,7 @@ public class SysClassPropertySearchable extends BaseSearchable {
     @ApiModelProperty(value = "转换KEY", position = 23, required = true)
     private String lookupKey;
 
+    @ApiModelProperty(value = "别名", position = 30)
+    private String aliasName;
+
 }

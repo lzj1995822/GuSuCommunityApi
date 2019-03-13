@@ -85,4 +85,7 @@ public class SysClassPropertyVO extends BaseVO {
 
     @ApiModelProperty(value = "表单是否不显示", position = 29)
     private String formShow;
+
+    @ApiModelProperty(value = "别名", position = 30)
+    private String aliasName;
 }

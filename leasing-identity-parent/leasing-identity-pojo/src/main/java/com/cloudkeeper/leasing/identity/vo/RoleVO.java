@@ -36,4 +36,8 @@ public class RoleVO extends BaseVO {
     /** 组织 id*/
     @ApiModelProperty(value = "组织id", position = 22)
     private String organizationId;
+
+    /** 组织 id*/
+    @ApiModelProperty(value = "组织name", position = 22)
+    private String organizationName;
 }
