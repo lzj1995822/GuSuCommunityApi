@@ -2,7 +2,7 @@ spring:
   # 数据库配置
   datasource:
     # 连接地址
-    url: jdbc:mysql://rm-uf639z9s4zf5n7c9gko.mysql.rds.aliyuncs.com/gusucommunity?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    url: jdbc:mysql://rm-uf639z9s4zf5n7c9gko.mysql.rds.aliyuncs.com:3306/gusuCommunity?useUnicode=true&characterEncoding=utf-8&useSSL=false
     # 用户名
     username: asher
     # 密码-
@@ -112,6 +112,6 @@ fdfs:
   thumbImage:             #缩略图生成参数
     width: 150
     height: 150
-  trackerList: 172.16.0.199:22122
+  trackerList: 106.15.92.79:22122
 
 
