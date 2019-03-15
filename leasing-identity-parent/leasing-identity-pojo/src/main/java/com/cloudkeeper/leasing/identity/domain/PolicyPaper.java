@@ -60,7 +60,7 @@ public class PolicyPaper extends BaseEntity {
     public <T> T convert(@Nonnull Class<T> clazz) {
         T convert = super.convert(clazz);
         PolicyPaperVO policyPaperVO = (PolicyPaperVO) convert;
-        if(!StringUtils.isEmpty( policyPaperVO.getOrganizationId())) {
+        if(!StringUtils.isEmpty( policyPaperVO.getOrganizationId()) && this.organization != null) {
             policyPaperVO.setOrganizationName(this.organization.getName());
         }
         return (T) policyPaperVO;
