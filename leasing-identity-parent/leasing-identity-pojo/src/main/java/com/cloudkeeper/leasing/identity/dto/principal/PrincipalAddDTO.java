@@ -57,6 +57,11 @@ public class PrincipalAddDTO extends BaseEditDTO {
     @Length(max = 1000)
     private String note;
 
+    /** 头像*/
+    @ApiModelProperty(value = "头像", position = 20)
+    @Length(max = 1000)
+    private String photo;
+
     /** 组织id */
     @ApiModelProperty(value = "组织id", position = 22, required = true)
     @Length(max = 36)

@@ -42,6 +42,10 @@ public class PrincipalVO extends BaseVO {
     @ApiModelProperty(value = "描述", position = 20)
     private String note;
 
+    /** 头像*/
+    @ApiModelProperty(value = "头像", position = 20)
+    private String photo;
+
     /** 主岗*/
     @ApiModelProperty(value = "主岗", position = 22)
     private OrganizationVO organizationVO;
@@ -67,7 +71,5 @@ public class PrincipalVO extends BaseVO {
 
     @ApiModelProperty(value = "角色", position = 28, required = true)
     private String roleName;
-
-
 
 }
