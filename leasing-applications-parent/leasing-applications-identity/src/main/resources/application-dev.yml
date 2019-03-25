@@ -62,7 +62,7 @@ spring:
     # 数据库类型 mysql
     database: mysql
     # 是否显示 sql语句
-    show-sql: true
+    show-sql: false
     # hibernate 配置
     hibernate:
       naming:
