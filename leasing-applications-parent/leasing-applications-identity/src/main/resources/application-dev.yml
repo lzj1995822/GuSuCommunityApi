@@ -112,6 +112,6 @@ fdfs:
   thumbImage:             #缩略图生成参数
     width: 150
     height: 150
-  trackerList: 106.15.92.79:22122
+  trackerList: 122.97.218.162:22122
 
 
